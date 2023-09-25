@@ -1,0 +1,45 @@
+To load a custom DLL (Dynamic Link Library) in XAMPP, you typically need to configure PHP to use the DLL. Here are the general steps to do this:
+
+Place the Custom DLL:
+First, make sure you have the custom DLL file you want to load. Place it in a directory where PHP can access it. This is usually within the PHP extensions directory or in the directory where your PHP script resides.
+
+Edit PHP Configuration:
+You'll need to edit the php.ini file to load the custom DLL. Here's how to do it:
+
+a. Locate your php.ini file. This file should be in the PHP installation directory.
+
+b. Open php.ini in a text editor.
+
+c. Search for the [ExtensionList] section or find the appropriate extension-related section (e.g., [PHP], [ExtensionList], etc.).
+
+d. Add the following line to load your custom DLL:
+
+makefile
+Copy code
+extension=your_custom.dll
+Replace your_custom.dll with the actual name of your DLL file.
+
+Restart Apache:
+After making changes to the php.ini file, you need to restart the Apache web server to apply the configuration changes. You can do this from the XAMPP Control Panel:
+
+a. Open the XAMPP Control Panel.
+
+b. Stop the Apache server.
+
+c. Start the Apache server again.
+
+Verify the Extension:
+You can create a PHP script to check if your custom DLL extension is loaded successfully. Create a file, e.g., check_extension.php, with the following content:
+
+php
+Copy code
+<?php
+if (extension_loaded('your_custom')) {
+    echo "Custom DLL extension loaded successfully.";
+} else {
+    echo "Custom DLL extension not loaded.";
+}
+?>
+Place this script in your web server's document root (usually the htdocs directory in XAMPP) and access it through your web browser (e.g., http://localhost/check_extension.php). You should see a message indicating whether the extension is loaded or not.
+
+Please note that loading custom DLLs should be done with caution, as it can introduce security and stability risks. Ensure that you trust the source and content of the DLL, and be aware that improper configuration can lead to issues with your XAMPP environment.
